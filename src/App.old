@@ -1,0 +1,70 @@
+import React from "react";
+import TopNav from "./components/TopNav";
+import SideNav from "./components/SideNav";
+
+import Dashboard from "./components/Dashboard";
+import Charts from "./components/charts";
+import Tables from "./components/tables";
+import Profiles from "./components/Profiles";
+import Profile from "./components/Profile";
+import Settings from "./components/settings";
+import Marquee from "./components/Marquee";
+import Wall from "./components/wall";
+// import
+
+import { BrowserRouter as Router,
+          Route,
+          Link
+        } from "react-router-dom";
+
+
+
+function App() {
+  return (
+      <div>
+        <div id="wrapper">
+          <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <TopNav />
+            <SideNav />
+          </nav>
+          <div style={{backgroundColor: "white"}}>
+          {/* PUT YOUR ROUTES HERE */}
+          <BasicExample />
+          </div>
+        </div>
+      </div>
+  );
+}
+
+
+export default App;
+
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Dashboard</Link></li>
+        <li><Link to="/Profiles">Profiles</Link></li>
+        <li><Link to="/Profile">Profile</Link></li>
+        <li><Link to="/Charts">Charts</Link></li>
+        <li><Link to="/Tables">Tables</Link></li>
+        <li><Link to="/wall">Wall</Link></li>
+        <li><Link to="/Marquee">Marquee</Link></li>
+        <li><Link to="/settings">Settings</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Dashboard} />
+      <Route path="/profiles" component={Profiles} />
+      <Route path="/profile/:id" component={Profile} />
+      <Route path="/charts" component={Charts} />
+      <Route path="/tables" component={Tables} />
+      <Route path="/Settings" component={Settings} />
+      <Route path="/Marquee/:text" component={Marquee} />
+      <Route path="/wall" component={Wall} />
+    </div>
+  </Router>
+)
+// export default BasicExample;
+//Now you’re ready to tinker. Happy routing!
